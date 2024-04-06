@@ -7,4 +7,7 @@ public interface IRutas_segurasService {
     public void insert(Rutas_seguras rutas_Seguras);
 
     public List<Rutas_seguras> list();
+    public void delete(int id);
+
+    public Rutas_seguras listId(int id);
 }

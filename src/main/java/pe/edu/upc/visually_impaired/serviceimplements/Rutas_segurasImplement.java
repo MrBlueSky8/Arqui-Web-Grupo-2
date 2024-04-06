@@ -16,4 +16,14 @@ public class Rutas_segurasImplement implements IRutas_segurasService {
     public void insert(Rutas_seguras rutas_seguras) { rsR.save(rutas_seguras); }
     @Override
     public List<Rutas_seguras> list() { return rsR.findAll(); }
+
+    @Override
+    public void delete(int id) {
+        rsR.deleteById(id);
+    }
+
+    @Override
+    public Rutas_seguras listId(int id) {
+        return rsR.findById(id).orElse(new Rutas_seguras());
+    }
 }

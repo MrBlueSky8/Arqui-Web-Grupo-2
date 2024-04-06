@@ -12,23 +12,26 @@ public class Rutas_seguras {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "punto_origen",nullable = false,length =100)
-    private String titleMovie;
+    private String punto_origen;
+    @Column(name = "punto_destino",nullable = false,length =100)
+    private String punto_destino;
     @Column(name = "distancia",nullable = false)
-    private int genderMovie;
-    @Column(name = "descripcion",nullable = false,length =300)
+    private int distancia;
+    @Column(name = "descripcion",nullable = false,length =100)
     private String descripcion;
-    @Column(name = "informacion_general",nullable = false,length =300)
-    private String informacion_general;
+    @Column(name = "lista_coordenas",nullable = false,length =200)
+    private String lista_coordenas;
 
     public Rutas_seguras() {
     }
 
-    public Rutas_seguras(int id, String titleMovie, int genderMovie, String descripcion, String informacion_general) {
+    public Rutas_seguras(int id, String punto_origen, String punto_destino, int distancia, String descripcion, String lista_coordenas) {
         this.id = id;
-        this.titleMovie = titleMovie;
-        this.genderMovie = genderMovie;
+        this.punto_origen = punto_origen;
+        this.punto_destino = punto_destino;
+        this.distancia = distancia;
         this.descripcion = descripcion;
-        this.informacion_general = informacion_general;
+        this.lista_coordenas = lista_coordenas;
     }
 
     public int getId() {
@@ -39,20 +42,28 @@ public class Rutas_seguras {
         this.id = id;
     }
 
-    public String getTitleMovie() {
-        return titleMovie;
+    public String getPunto_origen() {
+        return punto_origen;
     }
 
-    public void setTitleMovie(String titleMovie) {
-        this.titleMovie = titleMovie;
+    public void setPunto_origen(String punto_origen) {
+        this.punto_origen = punto_origen;
     }
 
-    public int getGenderMovie() {
-        return genderMovie;
+    public String getPunto_destino() {
+        return punto_destino;
     }
 
-    public void setGenderMovie(int genderMovie) {
-        this.genderMovie = genderMovie;
+    public void setPunto_destino(String punto_destino) {
+        this.punto_destino = punto_destino;
+    }
+
+    public int getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(int distancia) {
+        this.distancia = distancia;
     }
 
     public String getDescripcion() {
@@ -63,11 +74,11 @@ public class Rutas_seguras {
         this.descripcion = descripcion;
     }
 
-    public String getInformacion_general() {
-        return informacion_general;
+    public String getLista_coordenas() {
+        return lista_coordenas;
     }
 
-    public void setInformacion_general(String informacion_general) {
-        this.informacion_general = informacion_general;
+    public void setLista_coordenas(String lista_coordenas) {
+        this.lista_coordenas = lista_coordenas;
     }
 }

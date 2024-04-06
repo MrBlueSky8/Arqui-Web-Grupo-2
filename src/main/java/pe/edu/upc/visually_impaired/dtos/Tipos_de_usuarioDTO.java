@@ -21,4 +21,5 @@ public class Tipos_de_usuarioDTO {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
 }
