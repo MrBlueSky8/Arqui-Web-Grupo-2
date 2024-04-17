@@ -39,7 +39,7 @@ public class CoordenadasConverterImplement implements ICoordenadasConverterServi
     * CoordenadasService coordenadasService = new CoordenadasService();
 
         // Coordenadas en formato DMS
-        String coordenadasDMS = "12°04'26.4\"S 76°58'38.3\"W";
+        String coordenadasDMS = "12°04'26.4"S 76°58'38.3"W";
 
         // Convertir coordenadas de DMS a decimal
         double[] coordenadasDecimal = coordenadasService.convertirDMSToDecimal(coordenadasDMS);
