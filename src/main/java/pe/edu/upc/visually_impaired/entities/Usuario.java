@@ -19,7 +19,7 @@ public class Usuario {
     @Column(name = "password", nullable = false, length = 250)
     private String password;
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "tipo_usuario_id")
     private Tipos_de_usuario tipos_usuario;
 
     public Usuario() {
