@@ -13,6 +13,7 @@ public class HistorialNavegacionDTO {
     private Rutas_seguras rutas_seguras;
     private LocalDateTime fechayhora_inicio;
     private LocalDateTime fechayhora_destino;
+    private boolean finalizado;
     private String detalles;
 
     public int getId() {
@@ -53,6 +54,14 @@ public class HistorialNavegacionDTO {
 
     public void setFechayhora_destino(LocalDateTime fechayhora_destino) {
         this.fechayhora_destino = fechayhora_destino;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public String getDetalles() {

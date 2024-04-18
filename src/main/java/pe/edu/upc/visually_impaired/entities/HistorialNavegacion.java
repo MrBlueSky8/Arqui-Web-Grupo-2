@@ -20,18 +20,21 @@ public class HistorialNavegacion {
     private LocalDateTime fechayhora_inicio;
     @Column(name = "fechayhora_destino",nullable = false)
     private LocalDateTime fechayhora_destino;
+    @Column(name = "finalizado",nullable = false)
+    private boolean finalizado;
     @Column(name = "detalles",nullable = false, length = 250)
     private String detalles;
 
     public HistorialNavegacion() {
     }
 
-    public HistorialNavegacion(int id, Usuario usuario, Rutas_seguras rutas_seguras, LocalDateTime fechayhora_inicio, LocalDateTime fechayhora_destino, String detalles) {
+    public HistorialNavegacion(int id, Usuario usuario, Rutas_seguras rutas_seguras, LocalDateTime fechayhora_inicio, LocalDateTime fechayhora_destino, boolean finalizado, String detalles) {
         this.id = id;
         this.usuario = usuario;
         this.rutas_seguras = rutas_seguras;
         this.fechayhora_inicio = fechayhora_inicio;
         this.fechayhora_destino = fechayhora_destino;
+        this.finalizado = finalizado;
         this.detalles = detalles;
     }
 
@@ -73,6 +76,14 @@ public class HistorialNavegacion {
 
     public void setFechayhora_destino(LocalDateTime fechayhora_destino) {
         this.fechayhora_destino = fechayhora_destino;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public String getDetalles() {
