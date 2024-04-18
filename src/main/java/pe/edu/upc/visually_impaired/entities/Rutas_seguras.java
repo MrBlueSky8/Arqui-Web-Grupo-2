@@ -19,19 +19,16 @@ public class Rutas_seguras {
     private int distancia;
     @Column(name = "descripcion",nullable = false,length =100)
     private String descripcion;
-    @Column(name = "lista_coordenas",nullable = false,length =200)
-    private String lista_coordenas;
 
     public Rutas_seguras() {
     }
 
-    public Rutas_seguras(int id, String punto_origen, String punto_destino, int distancia, String descripcion, String lista_coordenas) {
+    public Rutas_seguras(int id, String punto_origen, String punto_destino, int distancia, String descripcion) {
         this.id = id;
         this.punto_origen = punto_origen;
         this.punto_destino = punto_destino;
         this.distancia = distancia;
         this.descripcion = descripcion;
-        this.lista_coordenas = lista_coordenas;
     }
 
     public int getId() {
@@ -72,13 +69,5 @@ public class Rutas_seguras {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getLista_coordenas() {
-        return lista_coordenas;
-    }
-
-    public void setLista_coordenas(String lista_coordenas) {
-        this.lista_coordenas = lista_coordenas;
     }
 }

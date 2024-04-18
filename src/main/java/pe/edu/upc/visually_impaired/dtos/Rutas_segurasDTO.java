@@ -8,7 +8,6 @@ public class Rutas_segurasDTO {
     private String punto_destino;
     private int distancia;
     private String descripcion;
-    private String lista_coordenas;
 
     public int getId() {
         return id;
@@ -48,13 +47,5 @@ public class Rutas_segurasDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getLista_coordenas() {
-        return lista_coordenas;
-    }
-
-    public void setLista_coordenas(String lista_coordenas) {
-        this.lista_coordenas = lista_coordenas;
     }
 }

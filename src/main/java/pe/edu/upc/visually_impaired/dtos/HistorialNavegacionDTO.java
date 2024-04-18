@@ -1,16 +1,18 @@
 package pe.edu.upc.visually_impaired.dtos;
 
+import jakarta.persistence.Column;
 import pe.edu.upc.visually_impaired.entities.Rutas_seguras;
 import pe.edu.upc.visually_impaired.entities.Usuario;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class HistorialNavegacionDTO {
     private int id;
     private Usuario usuario;
     private Rutas_seguras rutas_seguras;
-    private LocalTime hora_inicio;
-    private LocalTime hora_destino;
+    private LocalDateTime fechayhora_inicio;
+    private LocalDateTime fechayhora_destino;
     private String detalles;
 
     public int getId() {
@@ -37,20 +39,20 @@ public class HistorialNavegacionDTO {
         this.rutas_seguras = rutas_seguras;
     }
 
-    public LocalTime getHora_inicio() {
-        return hora_inicio;
+    public LocalDateTime getFechayhora_inicio() {
+        return fechayhora_inicio;
     }
 
-    public void setHora_inicio(LocalTime hora_inicio) {
-        this.hora_inicio = hora_inicio;
+    public void setFechayhora_inicio(LocalDateTime fechayhora_inicio) {
+        this.fechayhora_inicio = fechayhora_inicio;
     }
 
-    public LocalTime getHora_destino() {
-        return hora_destino;
+    public LocalDateTime getFechayhora_destino() {
+        return fechayhora_destino;
     }
 
-    public void setHora_destino(LocalTime hora_destino) {
-        this.hora_destino = hora_destino;
+    public void setFechayhora_destino(LocalDateTime fechayhora_destino) {
+        this.fechayhora_destino = fechayhora_destino;
     }
 
     public String getDetalles() {
