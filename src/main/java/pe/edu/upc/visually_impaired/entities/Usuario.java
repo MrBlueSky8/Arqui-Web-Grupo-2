@@ -12,6 +12,8 @@ public class Usuario {
     private String nombre;
     @Column(name = "apellido", nullable = false, length = 50)
     private String apellido;
+    @Column(name = "genero", nullable = false, length = 50)
+    private String genero;
     @Column(name = "email", nullable = false, length = 250)
     private String email;
     @Column(name = "ultima_ubicacion", nullable = false, length = 500)
@@ -25,10 +27,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String email, String ultima_ubicacion, String password, Tipos_de_usuario tipos_usuario) {
+    public Usuario(int idUsuario, String nombre, String apellido, String genero, String email, String ultima_ubicacion, String password, Tipos_de_usuario tipos_usuario) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.genero = genero;
         this.email = email;
         this.ultima_ubicacion = ultima_ubicacion;
         this.password = password;
@@ -57,6 +60,14 @@ public class Usuario {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getEmail() {

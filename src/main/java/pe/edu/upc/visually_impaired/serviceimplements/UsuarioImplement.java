@@ -31,4 +31,8 @@ public class UsuarioImplement implements IUsuarioService {
     public Usuario listId(int id) {
         return uR.findById(id).orElse(new Usuario());
     }
+    @Override
+    public List<String[]> cantidadporGenero(){
+        return uR.cantidadporGenero();
+    }
 }

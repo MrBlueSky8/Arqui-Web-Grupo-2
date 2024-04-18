@@ -1,10 +1,16 @@
 package pe.edu.upc.visually_impaired.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.visually_impaired.entities.Usuario;
 
+import java.util.List;
+
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
-
+    @Query(value = "Select genero, Count(*) As cantidad_usuarios \n" +
+            "From Usuario \n" +
+            "Group By genero; ",nativeQuery = true)
+    public List<String[]> cantidadporGenero();
 }

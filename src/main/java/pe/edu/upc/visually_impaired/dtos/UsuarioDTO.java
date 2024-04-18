@@ -6,6 +6,7 @@ public class UsuarioDTO {
 
     private String nombre;
     private String apellido;
+    private String genero;
     private String email;
     private String ultima_ubicacion;
     private String password;
@@ -33,6 +34,14 @@ public class UsuarioDTO {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getEmail() {
