@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.visually_impaired.dtos.Rutas_segurasDTO;
+import pe.edu.upc.visually_impaired.dtos.RutasxDistanciaIngresadaDTO;
 import pe.edu.upc.visually_impaired.entities.Rutas_seguras;
 import pe.edu.upc.visually_impaired.serviceinterfaces.IRutas_segurasService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,4 +41,18 @@ public class Rutas_segurasController {
         Rutas_segurasDTO dto=m.map(rsS.listId(id),Rutas_segurasDTO.class);
         return dto;
     }
+    @GetMapping("/distancias_menores")
+    public List<RutasxDistanciaIngresadaDTO> rutasSegurasanterioresxDistancia(@RequestParam int distancia){
+        List<String[]> filaLista= rsS.rutasSegurasanterioresxDistancia(distancia);
+        List<RutasxDistanciaIngresadaDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filaLista){
+            RutasxDistanciaIngresadaDTO dto = new RutasxDistanciaIngresadaDTO();
+            dto.setDistancia(Integer.parseInt(columna[0]));
+            dto.setPunto_origen(columna[1]);
+            dto.setPunto_destino(columna[2]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
 }

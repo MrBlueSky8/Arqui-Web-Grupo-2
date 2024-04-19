@@ -10,4 +10,6 @@ public interface IRutas_segurasService {
     public void delete(int id);
 
     public Rutas_seguras listId(int id);
+
+    public List<String[]> rutasSegurasanterioresxDistancia(int distanciaingresada);
 }

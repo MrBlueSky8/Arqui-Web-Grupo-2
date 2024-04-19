@@ -27,4 +27,11 @@ public class HistorialNavegacionImplement implements IHistorialNavegacionService
     public HistorialNavegacion listId(int id){
         return hR.findById(id).orElse(new HistorialNavegacion());
     }
+
+    @Override
+    public List<String[]> Ruta_mas_transitada() {
+        return hR.Ruta_mas_transitada();
+    }
+
+
 }

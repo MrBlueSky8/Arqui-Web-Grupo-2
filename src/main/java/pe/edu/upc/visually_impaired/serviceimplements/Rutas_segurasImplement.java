@@ -26,4 +26,11 @@ public class Rutas_segurasImplement implements IRutas_segurasService {
     public Rutas_seguras listId(int id) {
         return rsR.findById(id).orElse(new Rutas_seguras());
     }
+
+    @Override
+    public List<String[]> rutasSegurasanterioresxDistancia(int distanciaingresada) {
+        return rsR.rutasSegurasanterioresxDistancia(distanciaingresada);
+    }
+
+
 }

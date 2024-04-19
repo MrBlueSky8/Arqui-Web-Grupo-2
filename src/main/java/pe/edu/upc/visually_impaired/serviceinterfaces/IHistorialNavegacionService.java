@@ -9,4 +9,5 @@ public interface IHistorialNavegacionService {
     public List<HistorialNavegacion> list();
     public void delete(int id);
     public HistorialNavegacion listId(int id);
+    public List<String[]> Ruta_mas_transitada();
 }
