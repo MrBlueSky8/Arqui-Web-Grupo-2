@@ -9,4 +9,5 @@ public interface INotificacionesService {
     public List<Notificaciones> list();
     public void delete(int id);
     public Notificaciones listId(int id);
+    public List<String[]> notificacionesinleer(int idUsuario);
 }

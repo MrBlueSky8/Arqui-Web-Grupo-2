@@ -27,4 +27,9 @@ public class NotificacionesImplement implements INotificacionesService {
     public Notificaciones listId(int id){
         return nR.findById(id).orElse(new Notificaciones());
     }
+
+    @Override
+    public List<String[]> notificacionesinleer(int idUsuario) {
+        return nR.notificacionesinleer(idUsuario);
+    }
 }

@@ -28,4 +28,9 @@ public class EventosImplement implements IEventosService {
 
     @Override
     public Eventos listId(int id) {return eR.findById(id).orElse(new Eventos());}
+
+    @Override
+    public List<String[]> eventosxvenir() {
+        return eR.eventosxvenir();
+    }
 }

@@ -11,4 +11,5 @@ public interface IEventosService {
     public void delete(int id);
 
     public Eventos listId(int id);
+    public List<String[]> eventosxvenir();
 }

@@ -3,10 +3,14 @@ package pe.edu.upc.visually_impaired.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.visually_impaired.dtos.CantidadporGeneroDTO;
 import pe.edu.upc.visually_impaired.dtos.EventosDTO;
+import pe.edu.upc.visually_impaired.dtos.EventosxvenirDTO;
 import pe.edu.upc.visually_impaired.entities.Eventos;
 import pe.edu.upc.visually_impaired.serviceinterfaces.IEventosService;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,5 +51,19 @@ public class EventosController {
         ModelMapper m= new ModelMapper();
         EventosDTO dto=m.map(eS.listId(id),EventosDTO.class);
         return dto;
+    }
+    @GetMapping("/eventosproximos")
+    public List<EventosxvenirDTO> eventosxvenir(){
+        List<String[]> filaLista = eS.eventosxvenir();
+        List<EventosxvenirDTO> dtoLista=new ArrayList<>();
+        for (String[] fila : filaLista){
+            EventosxvenirDTO dto = new EventosxvenirDTO();
+            dto.setIdEvento(Integer.parseInt(fila[0]));
+            dto.setTipo_de_evento(fila[1]);
+            dto.setDescripcion(fila[2]);
+            dto.setFecha(LocalDate.parse(fila[3]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }
