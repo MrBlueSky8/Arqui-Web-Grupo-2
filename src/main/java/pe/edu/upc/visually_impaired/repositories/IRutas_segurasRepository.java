@@ -12,6 +12,6 @@ public interface IRutas_segurasRepository extends JpaRepository<Rutas_seguras,In
     @Query(value = "SELECT distancia, punto_destino, punto_origen\n" +
             "FROM rutas_seguras\n" +
             "WHERE distancia <= :distanciaingresada", nativeQuery = true)
-    public List<String[]> rutasSegurasanterioresxDistancia(int distanciaingresada);
+    public List<String[]> rutasSegurasanterioresxDistancia(int distanciaingresada); //Joaquin
 
 }

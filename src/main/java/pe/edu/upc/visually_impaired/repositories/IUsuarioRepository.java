@@ -12,5 +12,5 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query(value = "Select genero, Count(*) As cantidad_usuarios \n" +
             "From Usuario \n" +
             "Group By genero; ",nativeQuery = true)
-    public List<String[]> cantidadporGenero();
+    public List<String[]> cantidadporGenero(); //Mafer
 }

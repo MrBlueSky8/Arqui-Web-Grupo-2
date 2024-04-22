@@ -14,5 +14,5 @@ public interface IEventosRepository extends JpaRepository<Eventos, Integer> {
             "inner join tipos_evento te on e.tipo_evento_id = te.id\n" +
             "where e.fecha >= current_date\n" +
             "order by e.fecha asc", nativeQuery = true)
-    public List<String[]> eventosxvenir();
+    public List<String[]> eventosxvenir(); //Fabrzio
 }

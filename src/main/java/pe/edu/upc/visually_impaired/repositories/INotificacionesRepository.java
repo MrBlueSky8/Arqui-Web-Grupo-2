@@ -13,5 +13,5 @@ public interface INotificacionesRepository extends JpaRepository<Notificaciones,
             "from Notificaciones\n" +
             "where usuario_id = :idUsuario\n" +
             "and estado = false", nativeQuery = true)
-    public List<String[]> notificacionesinleer(int idUsuario);
+    public List<String[]> notificacionesinleer(int idUsuario); //Fabrizio
 }

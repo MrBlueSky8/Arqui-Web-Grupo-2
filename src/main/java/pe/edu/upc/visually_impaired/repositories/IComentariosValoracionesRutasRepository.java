@@ -14,5 +14,5 @@ public interface IComentariosValoracionesRutasRepository extends JpaRepository<C
             "Join historial_navegacion hn On r.id = hn.ruta_id \n" +
             "Join comentaios_valoraciones_rutas cvr On hn.id = cvr.historialnavegacionid \n" +
             "Where cvr.valoracion > 10; ", nativeQuery = true)
-    public List<String[]> valoracionesRutas();
+    public List<String[]> valoracionesRutas(); //Mafer
 }

@@ -15,5 +15,5 @@ public interface IHistorialNavegacionRepository extends JpaRepository<HistorialN
             "where hn.finalizado = true\n" +
             "group by  rs.id, rs.punto_origen, rs.punto_destino\n" +
             "order by  Ruta_mas_transitada desc LIMIT 1;\n", nativeQuery = true)
-    public List<String[]> Ruta_mas_transitada();
+    public List<String[]> Ruta_mas_transitada(); //joaquin
 }
