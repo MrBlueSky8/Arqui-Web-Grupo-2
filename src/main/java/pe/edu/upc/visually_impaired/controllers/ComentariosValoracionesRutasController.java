@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.visually_impaired.dtos.ComentariosValoracionesRutasDTO;
 import pe.edu.upc.visually_impaired.dtos.ValoracionesRutasDTO;
+import pe.edu.upc.visually_impaired.dtos.ValoracionpromedioRutasDTO;
 import pe.edu.upc.visually_impaired.entities.ComentaiosValoracionesRutas;
 import pe.edu.upc.visually_impaired.serviceinterfaces.IComentariosValoracionesRutasService;
 
@@ -48,19 +49,18 @@ public class ComentariosValoracionesRutasController {
         ComentariosValoracionesRutasDTO dto=m.map(ccS.listId(id),ComentariosValoracionesRutasDTO.class);
         return dto;
     }
-    @GetMapping("/rutasvaloracionmasde10")
-    public List<ValoracionesRutasDTO> valoracionesRutas(){
+    @GetMapping("/rutaspromediovaloracion")
+    public List<ValoracionpromedioRutasDTO> valoracionespromedioRutas(){
         List<String[]> filaLista = ccS.valoracionesRutas();
-        List<ValoracionesRutasDTO> dtoLista=new ArrayList<>();
+        List<ValoracionpromedioRutasDTO> dtoLista=new ArrayList<>();
         for (String[] fila : filaLista){
-            ValoracionesRutasDTO dto = new ValoracionesRutasDTO();
-            dto.setDistancia(Integer.parseInt(fila[0]));
-            dto.setId(Integer.parseInt(fila[1]));
-            dto.setDescripcion(fila[2]);
-            dto.setPunto_destino(fila[3]);
+            ValoracionpromedioRutasDTO dto = new ValoracionpromedioRutasDTO();
+            dto.setId(Integer.parseInt(fila[0]));
             dto.setPunto_origen(fila[4]);
-            dto.setLista_coordenadas(fila[5]);
-            dto.setValoracion(Integer.parseInt(fila[6]));
+            dto.setPunto_destino(fila[3]);
+            dto.setDescripcion(fila[4]);
+            dto.setValoracion_promedio(Float.parseFloat(fila[5]));
+            dto.setCantidad_comentarios(Integer.parseInt(fila[6]));
             dtoLista.add(dto);
         }
         return dtoLista;
