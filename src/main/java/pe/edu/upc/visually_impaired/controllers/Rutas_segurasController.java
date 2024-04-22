@@ -3,6 +3,7 @@ package pe.edu.upc.visually_impaired.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.visually_impaired.dtos.RutaSeguraTiempoPromedioDTO;
 import pe.edu.upc.visually_impaired.dtos.Rutas_segurasDTO;
 import pe.edu.upc.visually_impaired.dtos.RutasxDistanciaIngresadaDTO;
 import pe.edu.upc.visually_impaired.entities.Rutas_seguras;
@@ -46,6 +47,7 @@ public class Rutas_segurasController {
         List<String[]> filaLista= rsS.rutasSegurasanterioresxDistancia(distancia);
         List<RutasxDistanciaIngresadaDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filaLista){
+
             RutasxDistanciaIngresadaDTO dto = new RutasxDistanciaIngresadaDTO();
             dto.setDistancia(Integer.parseInt(columna[0]));
             dto.setPunto_origen(columna[1]);
@@ -55,4 +57,19 @@ public class Rutas_segurasController {
         return dtoLista;
     }
 
+    @GetMapping("/tiempopromedioxruta")
+    public List<RutaSeguraTiempoPromedioDTO> tiempopromedioxruta(){
+        List<String[]> filaLista= rsS.tiempopromedioxruta();
+        List<RutaSeguraTiempoPromedioDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filaLista){
+            RutaSeguraTiempoPromedioDTO dto = new RutaSeguraTiempoPromedioDTO();
+            dto.setPunto_origen(columna[0]);
+            dto.setPunto_destino(columna[1]);
+            dto.setDescripcion(columna[2]);
+            dto.setTiempo_promedio_navegacion_minutos(Integer.parseInt(columna[3]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+    
 }

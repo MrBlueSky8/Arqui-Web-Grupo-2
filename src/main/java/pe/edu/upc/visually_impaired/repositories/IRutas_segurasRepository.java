@@ -14,4 +14,12 @@ public interface IRutas_segurasRepository extends JpaRepository<Rutas_seguras,In
             "WHERE distancia <= :distanciaingresada", nativeQuery = true)
     public List<String[]> rutasSegurasanterioresxDistancia(int distanciaingresada); //Joaquin
 
+    @Query(value = "select r.punto_origen, r.punto_destino, r.descripcion, \n" +
+            "       avg(extract(EPOCH from (hn.fechayhora_destino - hn.fechayhora_inicio)) / 60) as tiempo_promedio_navegacion_minutos\n" +
+            "from rutas_seguras r\n" +
+            "left join historial_navegacion hn on r.id = hn.ruta_id\n" +
+            "group by r.punto_origen, r.punto_destino, r.descripcion", nativeQuery = true)
+    public List<String[]> tiempopromedioxruta(); //Alex
+
+
 }

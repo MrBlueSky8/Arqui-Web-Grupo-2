@@ -3,6 +3,7 @@ package pe.edu.upc.visually_impaired.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.visually_impaired.dtos.CantEventosPasadosByTeDTO;
 import pe.edu.upc.visually_impaired.dtos.CantidadporGeneroDTO;
 import pe.edu.upc.visually_impaired.dtos.EventosDTO;
 import pe.edu.upc.visually_impaired.dtos.EventosxvenirDTO;
@@ -62,6 +63,18 @@ public class EventosController {
             dto.setTipo_de_evento(fila[1]);
             dto.setDescripcion(fila[2]);
             dto.setFecha(LocalDate.parse(fila[3]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+    @GetMapping("/eventospasados")
+    public List<CantEventosPasadosByTeDTO> eventospasadosbytipoevento(){
+        List<String[]> filaLista = eS.eventospasadosBytipoevento();
+        List<CantEventosPasadosByTeDTO> dtoLista=new ArrayList<>();
+        for (String[] fila : filaLista){
+            CantEventosPasadosByTeDTO dto = new CantEventosPasadosByTeDTO();
+            dto.setTipo_de_evento(fila[0]);
+            dto.setCantidad_eventos(Integer.parseInt(fila[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

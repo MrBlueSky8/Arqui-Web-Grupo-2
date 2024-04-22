@@ -32,5 +32,10 @@ public class Rutas_segurasImplement implements IRutas_segurasService {
         return rsR.rutasSegurasanterioresxDistancia(distanciaingresada);
     }
 
+    @Override
+    public List<String[]> tiempopromedioxruta() {
+        return rsR.tiempopromedioxruta();
+    }
+
 
 }

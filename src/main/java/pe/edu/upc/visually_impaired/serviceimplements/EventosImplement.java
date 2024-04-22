@@ -33,4 +33,9 @@ public class EventosImplement implements IEventosService {
     public List<String[]> eventosxvenir() {
         return eR.eventosxvenir();
     }
+
+    @Override
+    public List<String[]> eventospasadosBytipoevento() {
+        return eR.eventospasadosBytipoevento();
+    }
 }

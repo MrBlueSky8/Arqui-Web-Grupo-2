@@ -12,4 +12,6 @@ public interface IEventosService {
 
     public Eventos listId(int id);
     public List<String[]> eventosxvenir();
+    public List<String[]> eventospasadosBytipoevento();
+
 }

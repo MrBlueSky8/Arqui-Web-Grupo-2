@@ -12,4 +12,6 @@ public interface IRutas_segurasService {
     public Rutas_seguras listId(int id);
 
     public List<String[]> rutasSegurasanterioresxDistancia(int distanciaingresada);
+    public List<String[]> tiempopromedioxruta();
+
 }
