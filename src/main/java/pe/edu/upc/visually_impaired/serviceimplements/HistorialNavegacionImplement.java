@@ -6,6 +6,8 @@ import pe.edu.upc.visually_impaired.entities.HistorialNavegacion;
 import pe.edu.upc.visually_impaired.repositories.IHistorialNavegacionRepository;
 import pe.edu.upc.visually_impaired.serviceinterfaces.IHistorialNavegacionService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class HistorialNavegacionImplement implements IHistorialNavegacionService {
@@ -31,6 +33,11 @@ public class HistorialNavegacionImplement implements IHistorialNavegacionService
     @Override
     public List<String[]> Ruta_mas_transitada() {
         return hR.Ruta_mas_transitada();
+    }
+
+    @Override
+    public List<String[]> FiltrarHistorialXFecha(int usuarioId, LocalDate fechas) {
+        return hR.FiltrarHistorialXFecha(usuarioId, fechas);
     }
 
 

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.visually_impaired.dtos.EventosxvenirDTO;
 import pe.edu.upc.visually_impaired.dtos.NotificacionesDTO;
 import pe.edu.upc.visually_impaired.dtos.NotificacionesNoLeidasDTO;
+import pe.edu.upc.visually_impaired.dtos.NotificacionesXTipoDTO;
 import pe.edu.upc.visually_impaired.entities.Notificaciones;
 import pe.edu.upc.visually_impaired.serviceinterfaces.INotificacionesService;
 
@@ -60,6 +61,20 @@ public class NotificacionesController {
             dto.setId(Integer.parseInt(fila[0]));
             dto.setContenido(fila[1]);
             dto.setFechayhora(LocalDateTime.parse(fila[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/notificacionesportipo")
+    public List<NotificacionesXTipoDTO> notificacionesportipo(@RequestParam String tipos,@RequestParam int idUsuarios){
+        List<String[]> filaLista = nS.notifiacionesXtipo(tipos,idUsuarios);
+        List<NotificacionesXTipoDTO> dtoLista=new ArrayList<>();
+        for (String[] fila : filaLista){
+            NotificacionesXTipoDTO dto = new NotificacionesXTipoDTO();
+            dto.setTipoNotificacion(fila[0]);
+            dto.setEstado(Boolean.parseBoolean(fila[1]));
+            dto.setContenido(fila[2]);
             dtoLista.add(dto);
         }
         return dtoLista;

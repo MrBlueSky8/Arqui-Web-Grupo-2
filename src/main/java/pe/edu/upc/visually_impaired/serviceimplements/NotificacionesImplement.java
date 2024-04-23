@@ -32,4 +32,9 @@ public class NotificacionesImplement implements INotificacionesService {
     public List<String[]> notificacionesinleer(int idUsuario) {
         return nR.notificacionesinleer(idUsuario);
     }
+
+    @Override
+    public List<String[]> notifiacionesXtipo(String tipos, int idUsuarios) {
+        return nR.notifiacionesXtipo(tipos,idUsuarios);
+    }
 }
