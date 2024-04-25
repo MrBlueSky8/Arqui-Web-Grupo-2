@@ -40,5 +40,10 @@ public class HistorialNavegacionImplement implements IHistorialNavegacionService
         return hR.FiltrarHistorialXFecha(usuarioId, fechas);
     }
 
+    @Override
+    public List<String[]> HistorialNavegacion_Por_Periodo(int usuarioId, String periodos) {
+        return hR.HistorialNavegacion_Por_Periodo(usuarioId,periodos);
+    }
+
 
 }
