@@ -83,4 +83,20 @@ public class HistorialNavegacionController {
         }
         return dtoLista;
     }
+    @GetMapping("/historialporperiodo")
+    public List<HistorialXFechaDTO> HistorialPorPeriodo(@RequestParam int usuario_id, @RequestParam String periodo){
+        List<String[]> filaLista = hS.HistorialNavegacion_Por_Periodo(usuario_id, periodo.toLowerCase());
+        List<HistorialXFechaDTO> dtoLista=new ArrayList<>();
+        for (String[] fila : filaLista){
+            HistorialXFechaDTO dto = new HistorialXFechaDTO();
+            dto.setDestino(fila[0]);
+            dto.setOrigen(fila[1]);
+            dto.setFechayHoraOrigen(LocalDateTime.parse(fila[2].replace(" ","T")));
+            dto.setFechayHoraDestino(LocalDateTime.parse(fila[3].replace(" ","T")));
+            dto.setDetalles(fila[4]);
+            dto.setFinalizado(Boolean.parseBoolean(fila[5]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
 }

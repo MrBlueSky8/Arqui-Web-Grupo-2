@@ -24,4 +24,14 @@ public interface IHistorialNavegacionRepository extends JpaRepository<HistorialN
                     "INNER JOIN rutas_seguras rs ON hn.usuario_id=rs.id\n " +
                     "WHERE hn.usuario_id=:usuarioId AND hn.fechayhora_destino>=:fecha",nativeQuery = true)
     public List<String[]> FiltrarHistorialXFecha(@Param("usuarioId")int usuarioId,@Param("fecha") LocalDate fechas);//Mary
+
+    @Query(value =  "SELECT rs.punto_destino,rs.punto_origen,hn.fechayhora_inicio,hn.fechayhora_destino,hn.detalles,hn.finalizado \n" +
+                    "FROM historial_navegacion hn \n" +
+                    "INNER JOIN rutas_seguras rs ON hn.usuario_id = rs.id \n" +
+                    "WHERE \n" +
+                    "    hn.usuario_id =:usuarioId \n" +
+                    "    AND ((:periodo='hoy' AND fechayhora_destino >= CURRENT_DATE AND fechayhora_destino < CURRENT_DATE + INTERVAL '1 day') \n" +
+                    "        OR (:periodo='ayer' AND fechayhora_destino >= CURRENT_DATE - INTERVAL '1 day' AND fechayhora_destino < CURRENT_DATE) \n" +
+                    "        OR (:periodo='ultima semana' AND fechayhora_destino >= CURRENT_DATE - INTERVAL '7 days' AND fechayhora_destino < CURRENT_DATE)) \n",nativeQuery = true)
+    public List<String[]> HistorialNavegacion_Por_Periodo(@Param("usuarioId")int usuarioId,@Param("periodo")String periodos);
 }
