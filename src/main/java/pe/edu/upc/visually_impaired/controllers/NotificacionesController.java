@@ -12,6 +12,7 @@ import pe.edu.upc.visually_impaired.serviceinterfaces.INotificacionesService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,7 +61,11 @@ public class NotificacionesController {
             NotificacionesNoLeidasDTO dto = new NotificacionesNoLeidasDTO();
             dto.setId(Integer.parseInt(fila[0]));
             dto.setContenido(fila[1]);
-            dto.setFechayhora(LocalDateTime.parse(fila[2]));
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+            LocalDateTime dateTime = LocalDateTime.parse(fila[2], formatter);
+            dto.setFechayhora(dateTime);
+
             dtoLista.add(dto);
         }
         return dtoLista;

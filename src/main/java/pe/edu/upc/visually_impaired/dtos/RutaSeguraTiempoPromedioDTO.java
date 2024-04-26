@@ -4,7 +4,7 @@ public class RutaSeguraTiempoPromedioDTO {
     private String punto_origen;
     private String punto_destino;
     private String descripcion;
-    private int tiempo_promedio_navegacion_minutos;
+    private float tiempo_promedio_navegacion_minutos;
 
     public String getPunto_origen() {
         return punto_origen;
@@ -22,7 +22,6 @@ public class RutaSeguraTiempoPromedioDTO {
         this.punto_destino = punto_destino;
     }
 
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -31,11 +30,11 @@ public class RutaSeguraTiempoPromedioDTO {
         this.descripcion = descripcion;
     }
 
-    public int getTiempo_promedio_navegacion_minutos() {
+    public float getTiempo_promedio_navegacion_minutos() {
         return tiempo_promedio_navegacion_minutos;
     }
 
-    public void setTiempo_promedio_navegacion_minutos(int tiempo_promedio_navegacion_minutos) {
+    public void setTiempo_promedio_navegacion_minutos(float tiempo_promedio_navegacion_minutos) {
         this.tiempo_promedio_navegacion_minutos = tiempo_promedio_navegacion_minutos;
     }
 }

@@ -56,11 +56,18 @@ public class ComentariosValoracionesRutasController {
         for (String[] fila : filaLista){
             ValoracionpromedioRutasDTO dto = new ValoracionpromedioRutasDTO();
             dto.setId(Integer.parseInt(fila[0]));
-            dto.setPunto_origen(fila[4]);
-            dto.setPunto_destino(fila[3]);
-            dto.setDescripcion(fila[4]);
-            dto.setValoracion_promedio(Float.parseFloat(fila[5]));
-            dto.setCantidad_comentarios(Integer.parseInt(fila[6]));
+            dto.setPunto_origen(fila[1]);
+            dto.setPunto_destino(fila[2]);
+            dto.setDescripcion(fila[3]);
+            if (fila[4] != null)
+            {
+                dto.setValoracion_promedio(Float.parseFloat(fila[4]));
+            }
+            else {
+                dto.setValoracion_promedio(0);
+            }
+
+            dto.setCantidad_comentarios(Integer.parseInt(fila[5]));
             dtoLista.add(dto);
         }
         return dtoLista;

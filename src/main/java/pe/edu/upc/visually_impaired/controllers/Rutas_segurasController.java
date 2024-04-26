@@ -66,7 +66,7 @@ public class Rutas_segurasController {
             dto.setPunto_origen(columna[0]);
             dto.setPunto_destino(columna[1]);
             dto.setDescripcion(columna[2]);
-            dto.setTiempo_promedio_navegacion_minutos(Integer.parseInt(columna[3]));
+            dto.setTiempo_promedio_navegacion_minutos(Float.parseFloat(columna[3]));
             dtoLista.add(dto);
         }
         return dtoLista;
