@@ -9,6 +9,8 @@ import java.util.List;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
+    public Usuario findByEmail(String username);
+
     @Query(value = "Select genero, Count(*) As cantidad_usuarios \n" +
             "From Usuario \n" +
             "Group By genero; ",nativeQuery = true)

@@ -2,9 +2,13 @@ package pe.edu.upc.visually_impaired.entities;
 
 import jakarta.persistence.*;
 
+import javax.management.relation.Role;
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name="Usuario")
-public class Usuario {
+public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
@@ -20,14 +24,16 @@ public class Usuario {
     private String ultima_ubicacion;
     @Column(name = "password", nullable = false, length = 250)
     private String password;
-    @ManyToOne
-    @JoinColumn(name = "tipo_usuario_id")
-    private Tipos_de_usuario tipos_usuario;
+    private Boolean enabled;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Tipos_de_usuario> roles;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String genero, String email, String ultima_ubicacion, String password, Tipos_de_usuario tipos_usuario) {
+    public Usuario(int idUsuario, String nombre, String apellido, String genero, String email, String ultima_ubicacion, String password, Boolean enabled, List<Tipos_de_usuario> roles) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -35,7 +41,8 @@ public class Usuario {
         this.email = email;
         this.ultima_ubicacion = ultima_ubicacion;
         this.password = password;
-        this.tipos_usuario = tipos_usuario;
+        this.enabled = enabled;
+        this.roles = roles;
     }
 
     public int getIdUsuario() {
@@ -94,11 +101,19 @@ public class Usuario {
         this.password = password;
     }
 
-    public Tipos_de_usuario getTipos_usuario() {
-        return tipos_usuario;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setTipos_usuario(Tipos_de_usuario tipos_usuario) {
-        this.tipos_usuario = tipos_usuario;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Tipos_de_usuario> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Tipos_de_usuario> roles) {
+        this.roles = roles;
     }
 }
