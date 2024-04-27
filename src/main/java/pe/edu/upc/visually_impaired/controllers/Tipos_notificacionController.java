@@ -23,6 +23,12 @@ public class Tipos_notificacionController {
         Tipos_notificacion tipos_notificacion = d.map(tiposNotificacionDTO,Tipos_notificacion.class);
         tiS.insert(tipos_notificacion);
     }
+    @PutMapping
+    public void modificar(@RequestBody Tipos_notificacionDTO tiposNotificacionDTO) {
+        ModelMapper d=new ModelMapper();
+        Tipos_notificacion tipos_notificacion = d.map(tiposNotificacionDTO,Tipos_notificacion.class);
+        tiS.insert(tipos_notificacion);
+    }
     @GetMapping
     public List<Tipos_notificacionDTO> listar(){
         return tiS.list().stream().map(y->{
