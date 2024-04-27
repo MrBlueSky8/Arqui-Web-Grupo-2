@@ -25,6 +25,12 @@ public class Rutas_segurasController {
         Rutas_seguras rutas_seguras = d.map(segurasDTO,Rutas_seguras.class);
         rsS.insert(rutas_seguras);
     }
+    @PutMapping
+    public void modificar(@RequestBody Rutas_segurasDTO segurasDTO) {
+        ModelMapper d=new ModelMapper();
+        Rutas_seguras rutas_seguras = d.map(segurasDTO,Rutas_seguras.class);
+        rsS.insert(rutas_seguras);
+    }
     @GetMapping
     public List<Rutas_segurasDTO> listar(){
         return rsS.list().stream().map(y->{
