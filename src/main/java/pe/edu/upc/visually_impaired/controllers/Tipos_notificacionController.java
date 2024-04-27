@@ -40,6 +40,7 @@ public class Tipos_notificacionController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         tiS.delete(id);
     }
