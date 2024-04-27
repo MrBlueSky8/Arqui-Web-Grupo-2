@@ -2,6 +2,7 @@ package pe.edu.upc.visually_impaired.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.visually_impaired.dtos.CantEventosPasadosByTeDTO;
 import pe.edu.upc.visually_impaired.dtos.CantidadporGeneroDTO;
@@ -22,6 +23,7 @@ public class EventosController {
     private IEventosService eS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void insertar(@RequestBody EventosDTO eventosDTO) {
         ModelMapper d=new ModelMapper();
         Eventos eventos = d.map(eventosDTO,Eventos.class);
@@ -54,6 +56,7 @@ public class EventosController {
         return dto;
     }
     @GetMapping("/eventosproximos")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<EventosxvenirDTO> eventosxvenir(){
         List<String[]> filaLista = eS.eventosxvenir();
         List<EventosxvenirDTO> dtoLista=new ArrayList<>();
@@ -68,6 +71,9 @@ public class EventosController {
         return dtoLista;
     }
     @GetMapping("/eventospasados")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+
+
     public List<CantEventosPasadosByTeDTO> eventospasadosbytipoevento(){
         List<String[]> filaLista = eS.eventospasadosBytipoevento();
         List<CantEventosPasadosByTeDTO> dtoLista=new ArrayList<>();
