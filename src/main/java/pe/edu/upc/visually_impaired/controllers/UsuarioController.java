@@ -2,6 +2,7 @@ package pe.edu.upc.visually_impaired.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.visually_impaired.dtos.CantidadporGeneroDTO;
 import pe.edu.upc.visually_impaired.dtos.UsuarioDTO;
@@ -33,6 +34,7 @@ public class UsuarioController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UsuarioDTO> listar(){
         return uS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -44,6 +46,7 @@ public class UsuarioController {
     public void eliminar(@PathVariable("id") Integer id){
         uS.delete(id);
     }
+
     @GetMapping("/{id}")
     public UsuarioDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m= new ModelMapper();
