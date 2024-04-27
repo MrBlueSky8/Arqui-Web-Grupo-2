@@ -21,6 +21,12 @@ public class Tipos_de_eventoController {
         Tipos_evento movie = d.map(eventoDTO,Tipos_evento.class);
         teS.insert(movie);
     }
+    @PutMapping
+    public void modificar(@RequestBody Tipos_eventoDTO eventoDTO) {
+        ModelMapper d=new ModelMapper();
+        Tipos_evento movie = d.map(eventoDTO,Tipos_evento.class);
+        teS.insert(movie);
+    }
     @GetMapping
     public List<Tipos_eventoDTO> listar(){
         return teS.list().stream().map(y->{
