@@ -19,25 +19,25 @@ import java.util.stream.Collectors;
 public class ComentariosValoracionesRutasController {
     @Autowired
     private IComentariosValoracionesRutasService ccS;
-    @PreAuthorize("hasAuthority('ADMIN')")
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody ComentariosValoracionesRutasDTO comentariosValoracionesRutasDTO){
         ModelMapper a = new ModelMapper();
         ComentaiosValoracionesRutas comentaiosValoracionesRutas=a.map(comentariosValoracionesRutasDTO,ComentaiosValoracionesRutas.class);
         ccS.insert(comentaiosValoracionesRutas);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody ComentariosValoracionesRutasDTO comentariosValoracionesRutasDTO) {
         ModelMapper d=new ModelMapper();
         ComentaiosValoracionesRutas comentaiosValoracionesRutas = d.map(comentariosValoracionesRutasDTO, ComentaiosValoracionesRutas.class);
         ccS.insert(comentaiosValoracionesRutas);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ComentaiosValoracionesRutas> listar(){
         return ccS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
