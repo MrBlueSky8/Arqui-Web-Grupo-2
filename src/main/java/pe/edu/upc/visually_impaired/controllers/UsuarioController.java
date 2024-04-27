@@ -51,6 +51,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public UsuarioDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m= new ModelMapper();
         UsuarioDTO dto=m.map(uS.listId(id),UsuarioDTO.class);

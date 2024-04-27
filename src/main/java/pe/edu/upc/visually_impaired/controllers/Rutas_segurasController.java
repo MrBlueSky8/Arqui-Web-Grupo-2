@@ -35,6 +35,7 @@ public class Rutas_segurasController {
         rsS.insert(rutas_seguras);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<Rutas_segurasDTO> listar(){
         return rsS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -47,12 +48,14 @@ public class Rutas_segurasController {
         rsS.delete(id);
     }
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public Rutas_segurasDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m= new ModelMapper();
         Rutas_segurasDTO dto=m.map(rsS.listId(id),Rutas_segurasDTO.class);
         return dto;
     }
     @GetMapping("/distancias_menores")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<RutasxDistanciaIngresadaDTO> rutasSegurasanterioresxDistancia(@RequestParam int distancia){
         List<String[]> filaLista= rsS.rutasSegurasanterioresxDistancia(distancia);
         List<RutasxDistanciaIngresadaDTO> dtoLista = new ArrayList<>();

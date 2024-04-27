@@ -33,6 +33,7 @@ public class Tipos_de_usuarioController {
         tuS.insert(tiposDeUsuario);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<Tipos_de_usuarioDTO> listar(){
         return tuS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
