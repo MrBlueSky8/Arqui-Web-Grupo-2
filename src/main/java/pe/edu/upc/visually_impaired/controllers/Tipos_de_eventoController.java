@@ -2,6 +2,7 @@ package pe.edu.upc.visually_impaired.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.visually_impaired.dtos.Tipos_eventoDTO;
 import pe.edu.upc.visually_impaired.entities.Tipos_evento;
@@ -16,12 +17,14 @@ public class Tipos_de_eventoController {
     @Autowired
     private ITipos_eventoService teS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody Tipos_eventoDTO eventoDTO) {
         ModelMapper d=new ModelMapper();
         Tipos_evento movie = d.map(eventoDTO,Tipos_evento.class);
         teS.insert(movie);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody Tipos_eventoDTO eventoDTO) {
         ModelMapper d=new ModelMapper();
         Tipos_evento movie = d.map(eventoDTO,Tipos_evento.class);
@@ -36,6 +39,7 @@ public class Tipos_de_eventoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         teS.delete(id);
     }
