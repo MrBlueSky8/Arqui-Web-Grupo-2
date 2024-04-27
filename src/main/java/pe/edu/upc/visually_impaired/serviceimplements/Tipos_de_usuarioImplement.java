@@ -14,7 +14,7 @@ public class Tipos_de_usuarioImplement implements ITipos_de_usuarioService {
     @Autowired
     private ITipos_de_usuarioRepository tuR;
     @Override
-    public void insert(Tipos_de_usuario tipos_de_usuario){ tuR.save(tipos_de_usuario); }
+    public void insert(Tipos_de_usuario tipos_de_usuario){ tuR.save(tipos_de_usuario); }    
     @Override
     public List<Tipos_de_usuario> list() { return tuR.findAll(); }
     @Override
