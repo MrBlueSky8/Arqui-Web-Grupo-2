@@ -2,7 +2,6 @@ package pe.edu.upc.visually_impaired.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.visually_impaired.dtos.ComentariosValoracionesRutasDTO;
 import pe.edu.upc.visually_impaired.dtos.ValoracionesRutasDTO;
@@ -19,24 +18,18 @@ import java.util.stream.Collectors;
 public class ComentariosValoracionesRutasController {
     @Autowired
     private IComentariosValoracionesRutasService ccS;
-    @PreAuthorize("hasAuthority('ADMIN')")
-
     @PostMapping
     public void insertar(@RequestBody ComentariosValoracionesRutasDTO comentariosValoracionesRutasDTO){
         ModelMapper a = new ModelMapper();
         ComentaiosValoracionesRutas comentaiosValoracionesRutas=a.map(comentariosValoracionesRutasDTO,ComentaiosValoracionesRutas.class);
         ccS.insert(comentaiosValoracionesRutas);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
-
     @PutMapping
     public void modificar(@RequestBody ComentariosValoracionesRutasDTO comentariosValoracionesRutasDTO) {
         ModelMapper d=new ModelMapper();
         ComentaiosValoracionesRutas comentaiosValoracionesRutas = d.map(comentariosValoracionesRutasDTO, ComentaiosValoracionesRutas.class);
         ccS.insert(comentaiosValoracionesRutas);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
-
     @GetMapping
     public List<ComentaiosValoracionesRutas> listar(){
         return ccS.list().stream().map(y->{

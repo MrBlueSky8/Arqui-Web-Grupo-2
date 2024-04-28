@@ -94,7 +94,7 @@ public class HistorialNavegacionController {
         return dtoLista;
     }
     @GetMapping("/historialporperiodo")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<HistorialXFechaDTO> HistorialPorPeriodo(@RequestParam int usuario_id, @RequestParam String periodo){
         List<String[]> filaLista = hS.HistorialNavegacion_Por_Periodo(usuario_id, periodo.toLowerCase());
         List<HistorialXFechaDTO> dtoLista=new ArrayList<>();

@@ -79,7 +79,7 @@ public class NotificacionesController {
     }
 
     @GetMapping("/notificacionesportipo")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<NotificacionesXTipoDTO> notificacionesportipo(@RequestParam String tipos,@RequestParam int idUsuarios){
         List<String[]> filaLista = nS.notifiacionesXtipo(tipos,idUsuarios);
         List<NotificacionesXTipoDTO> dtoLista=new ArrayList<>();
