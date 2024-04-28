@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 public class HistorialNavegacionDTO {
     private int id;
-    private Usuario usuario;
+    private UsuarioDTO usuario;
     private Rutas_seguras rutas_seguras;
     private LocalDateTime fechayhora_inicio;
     private LocalDateTime fechayhora_destino;
@@ -24,11 +24,11 @@ public class HistorialNavegacionDTO {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
 

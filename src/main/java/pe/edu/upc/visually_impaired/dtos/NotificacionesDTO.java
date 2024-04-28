@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class NotificacionesDTO {
     private int id;
-    private Usuario usuario;
+    private UsuarioDTO usuario;
     private Tipos_notificacion tipo_notificacion;
     private String contenido;
     private LocalDateTime fechayhora;
@@ -21,11 +21,11 @@ public class NotificacionesDTO {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
 

@@ -10,7 +10,7 @@ public class UsuarioDTO {
     private String email;
     private String ultima_ubicacion;
     private String password;
-    private Tipos_de_usuario tipos_usuario;
+    //private Tipos_de_usuario tipos_usuario;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -68,11 +68,4 @@ public class UsuarioDTO {
         this.password = password;
     }
 
-    public Tipos_de_usuario getTipos_usuario() {
-        return tipos_usuario;
-    }
-
-    public void setTipos_usuario(Tipos_de_usuario tipos_usuario) {
-        this.tipos_usuario = tipos_usuario;
-    }
 }

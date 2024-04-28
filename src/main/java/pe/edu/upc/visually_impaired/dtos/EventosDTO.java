@@ -13,7 +13,7 @@ public class EventosDTO {
     private LocalDate fecha;
     //private LocalTime hora;
     private boolean estado;
-    private Usuario usuario;
+    private UsuarioDTO usuario;
 
     public int getIdEvento() {
         return idEvento;
@@ -64,11 +64,11 @@ public class EventosDTO {
         this.estado = estado;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
 }
