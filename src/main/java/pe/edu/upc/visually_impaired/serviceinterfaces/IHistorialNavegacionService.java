@@ -16,5 +16,4 @@ public interface IHistorialNavegacionService {
     public List<String[]> FiltrarHistorialXFecha(int usuarioId, LocalDate fechas);
     public List<String[]> HistorialNavegacion_Por_Periodo(int usuarioId,String periodos);
 
-
 }

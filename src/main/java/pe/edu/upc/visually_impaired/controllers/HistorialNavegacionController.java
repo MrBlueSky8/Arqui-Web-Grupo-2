@@ -24,8 +24,7 @@ public class HistorialNavegacionController {
     @Autowired
     private IHistorialNavegacionService hS;
     @PostMapping
-    //@PreAuthorize("hasAuthority('ADMIN')")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody HistorialNavegacionDTO historialNavegacionDTO){
         ModelMapper a = new ModelMapper();
         HistorialNavegacion historialNavegacion=a.map(historialNavegacionDTO,HistorialNavegacion.class);
@@ -110,5 +109,4 @@ public class HistorialNavegacionController {
         }
         return dtoLista;
     }
-
 }
