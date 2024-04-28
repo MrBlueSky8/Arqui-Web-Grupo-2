@@ -50,5 +50,4 @@ public class Tipos_de_eventoController {
         Tipos_eventoDTO dto=m.map(teS.listId(id),Tipos_eventoDTO.class);
         return dto;
     }
-
 }
