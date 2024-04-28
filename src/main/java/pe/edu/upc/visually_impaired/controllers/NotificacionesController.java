@@ -39,10 +39,10 @@ public class NotificacionesController {
     }
     @GetMapping
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public List<Notificaciones> listar(){
+    public List<NotificacionesDTO> listar(){
         return nS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
-            return e.map(y,Notificaciones.class);
+            return e.map(y,NotificacionesDTO.class);
 
         }).collect(Collectors.toList());
     }

@@ -39,10 +39,10 @@ public class HistorialNavegacionController {
     }
     @GetMapping
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public List<HistorialNavegacion> listar(){
+    public List<HistorialNavegacionDTO> listar(){
         return hS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
-            return e.map(y,HistorialNavegacion.class);
+            return e.map(y,HistorialNavegacionDTO.class);
 
         }).collect(Collectors.toList());
     }
