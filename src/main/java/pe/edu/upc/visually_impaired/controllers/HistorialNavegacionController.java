@@ -37,7 +37,7 @@ public class HistorialNavegacionController {
         HistorialNavegacion historialNavegacion = d.map(historialNavegacionDTO,HistorialNavegacion.class);
         hS.insert(historialNavegacion);
     }
-    @GetMapping
+    @GetMapping //reparado
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<HistorialNavegacionDTO> listar(){
         return hS.list().stream().map(y->{
