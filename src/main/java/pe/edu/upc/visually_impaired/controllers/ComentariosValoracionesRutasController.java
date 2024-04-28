@@ -31,10 +31,10 @@ public class ComentariosValoracionesRutasController {
         ccS.insert(comentaiosValoracionesRutas);
     }
     @GetMapping
-    public List<ComentaiosValoracionesRutas> listar(){
+    public List<ComentariosValoracionesRutasDTO> listar(){
         return ccS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
-            return e.map(y,ComentaiosValoracionesRutas.class);
+            return e.map(y,ComentariosValoracionesRutasDTO.class);
 
         }).collect(Collectors.toList());
     }

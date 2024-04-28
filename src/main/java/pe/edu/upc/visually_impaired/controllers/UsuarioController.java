@@ -20,6 +20,7 @@ public class UsuarioController {
     private IUsuarioService uS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper d=new ModelMapper();
         Usuario usuario = d.map(usuarioDTO, Usuario.class);
@@ -27,6 +28,7 @@ public class UsuarioController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper d=new ModelMapper();
         Usuario usuario = d.map(usuarioDTO, Usuario.class);
@@ -43,17 +45,20 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         uS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public UsuarioDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m= new ModelMapper();
         UsuarioDTO dto=m.map(uS.listId(id),UsuarioDTO.class);
         return dto;
     }
     @GetMapping("/usuariosxgenero")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<CantidadporGeneroDTO> cantidadgenero(){
         List<String[]> filaLista = uS.cantidadporGenero();
         List<CantidadporGeneroDTO> dtoLista=new ArrayList<>();
