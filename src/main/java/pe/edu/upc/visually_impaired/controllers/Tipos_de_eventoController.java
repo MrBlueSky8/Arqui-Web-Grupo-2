@@ -31,7 +31,7 @@ public class Tipos_de_eventoController {
         teS.insert(movie);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     public List<Tipos_eventoDTO> listar(){
         return teS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();

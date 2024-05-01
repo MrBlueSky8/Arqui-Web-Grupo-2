@@ -20,7 +20,7 @@ public class UsuarioController {
     private IUsuarioService uS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper d=new ModelMapper();
         Usuario usuario = d.map(usuarioDTO, Usuario.class);

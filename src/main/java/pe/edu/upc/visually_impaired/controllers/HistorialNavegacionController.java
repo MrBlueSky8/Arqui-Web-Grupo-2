@@ -52,7 +52,7 @@ public class HistorialNavegacionController {
         hS.delete(id);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     public HistorialNavegacionDTO listarId(@PathVariable Integer id){
         ModelMapper m = new ModelMapper();
         HistorialNavegacionDTO dto=m.map(hS.listId(id),HistorialNavegacionDTO.class);
