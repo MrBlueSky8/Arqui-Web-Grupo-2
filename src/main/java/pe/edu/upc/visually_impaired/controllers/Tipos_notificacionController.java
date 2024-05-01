@@ -33,7 +33,7 @@ public class Tipos_notificacionController {
         tiS.insert(tipos_notificacion);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('COSTUMER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<Tipos_notificacionDTO> listar(){
         return tiS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();

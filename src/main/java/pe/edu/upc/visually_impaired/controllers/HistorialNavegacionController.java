@@ -38,7 +38,7 @@ public class HistorialNavegacionController {
         hS.insert(historialNavegacion);
     }
     @GetMapping //reparado
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('COSTUMER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<HistorialNavegacionDTO> listar(){
         return hS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
@@ -52,7 +52,7 @@ public class HistorialNavegacionController {
         hS.delete(id);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('COSTUMER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public HistorialNavegacionDTO listarId(@PathVariable Integer id){
         ModelMapper m = new ModelMapper();
         HistorialNavegacionDTO dto=m.map(hS.listId(id),HistorialNavegacionDTO.class);
