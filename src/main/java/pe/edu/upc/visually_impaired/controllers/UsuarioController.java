@@ -20,7 +20,7 @@ public class UsuarioController {
     private IUsuarioService uS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper d=new ModelMapper();
         Usuario usuario = d.map(usuarioDTO, Usuario.class);
@@ -51,7 +51,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('COSTUMER')")
     public UsuarioDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m= new ModelMapper();
         UsuarioDTO dto=m.map(uS.listId(id),UsuarioDTO.class);

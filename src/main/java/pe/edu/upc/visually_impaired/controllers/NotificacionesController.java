@@ -38,7 +38,7 @@ public class NotificacionesController {
         nS.insert(notificaciones);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('COSTUMER')")
     public List<NotificacionesDTO> listar(){
         return nS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
@@ -53,7 +53,7 @@ public class NotificacionesController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('COSTUMER')")
     public NotificacionesDTO listarId(@PathVariable Integer id){
         ModelMapper m = new ModelMapper();
         NotificacionesDTO dto=m.map(nS.listId(id),NotificacionesDTO.class);

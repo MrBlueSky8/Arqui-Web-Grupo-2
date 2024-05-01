@@ -19,7 +19,7 @@ public class Tipos_de_usuarioController {
     @Autowired
     private ITipos_de_usuarioService tuS;
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody Tipos_de_usuarioDTO tiposDeUsuarioDTO) {
         ModelMapper d=new ModelMapper();
         Tipos_de_usuario tiposDeUsuario = d.map(tiposDeUsuarioDTO,Tipos_de_usuario.class);
@@ -33,7 +33,7 @@ public class Tipos_de_usuarioController {
         tuS.insert(tiposDeUsuario);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('COSTUMER')")
     public List<Tipos_de_usuarioDTO> listar(){
         return tuS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
