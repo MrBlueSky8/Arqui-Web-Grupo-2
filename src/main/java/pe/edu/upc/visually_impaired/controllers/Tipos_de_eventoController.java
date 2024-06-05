@@ -17,21 +17,21 @@ public class Tipos_de_eventoController {
     @Autowired
     private ITipos_eventoService teS;
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody Tipos_eventoDTO eventoDTO) {
         ModelMapper d=new ModelMapper();
         Tipos_evento movie = d.map(eventoDTO,Tipos_evento.class);
         teS.insert(movie);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody Tipos_eventoDTO eventoDTO) {
         ModelMapper d=new ModelMapper();
         Tipos_evento movie = d.map(eventoDTO,Tipos_evento.class);
         teS.insert(movie);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<Tipos_eventoDTO> listar(){
         return teS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -40,7 +40,7 @@ public class Tipos_de_eventoController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         teS.delete(id);
     }

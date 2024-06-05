@@ -21,21 +21,21 @@ public class Rutas_segurasController {
     private IRutas_segurasService rsS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody Rutas_segurasDTO segurasDTO) {
         ModelMapper d=new ModelMapper();
         Rutas_seguras rutas_seguras = d.map(segurasDTO,Rutas_seguras.class);
         rsS.insert(rutas_seguras);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody Rutas_segurasDTO segurasDTO) {
         ModelMapper d=new ModelMapper();
         Rutas_seguras rutas_seguras = d.map(segurasDTO,Rutas_seguras.class);
         rsS.insert(rutas_seguras);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<Rutas_segurasDTO> listar(){
         return rsS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -43,7 +43,7 @@ public class Rutas_segurasController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         rsS.delete(id);
     }
@@ -55,7 +55,7 @@ public class Rutas_segurasController {
         return dto;
     }
     @GetMapping("/distancias_menores")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<RutasxDistanciaIngresadaDTO> rutasSegurasanterioresxDistancia(@RequestParam int distancia){
         List<String[]> filaLista= rsS.rutasSegurasanterioresxDistancia(distancia);
         List<RutasxDistanciaIngresadaDTO> dtoLista = new ArrayList<>();
@@ -71,7 +71,7 @@ public class Rutas_segurasController {
     }
 
     @GetMapping("/tiempopromedioxruta")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<RutaSeguraTiempoPromedioDTO> tiempopromedioxruta(){
         List<String[]> filaLista= rsS.tiempopromedioxruta();
         List<RutaSeguraTiempoPromedioDTO> dtoLista = new ArrayList<>();

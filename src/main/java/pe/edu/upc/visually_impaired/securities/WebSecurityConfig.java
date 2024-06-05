@@ -64,6 +64,10 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(antMatcher("/login")).permitAll()
                         .requestMatchers(antMatcher("/usuarios")).permitAll()
+                        .requestMatchers(antMatcher("/rutas_seguras")).permitAll()
+                        .requestMatchers(antMatcher("/tipoevento")).permitAll()
+                        .requestMatchers(antMatcher("/tipos_usuario")).permitAll()
+                        .requestMatchers(antMatcher("/tipos_notificacion")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
