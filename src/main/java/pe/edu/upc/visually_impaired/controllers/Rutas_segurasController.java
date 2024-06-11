@@ -48,7 +48,7 @@ public class Rutas_segurasController {
         rsS.delete(id);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public Rutas_segurasDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m= new ModelMapper();
         Rutas_segurasDTO dto=m.map(rsS.listId(id),Rutas_segurasDTO.class);
