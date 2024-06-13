@@ -1,12 +1,11 @@
 package pe.edu.upc.visually_impaired.dtos;
 
-import pe.edu.upc.visually_impaired.entities.HistorialNavegacion;
 
 public class ComentariosValoracionesRutasDTO {
     private int id;
     private int valoracion;
     private String comentario;
-    private HistorialNavegacion historialnavegacionid;
+    private HistorialNavegacionDTO historialnavegacionid;
 
     public int getId() {
         return id;
@@ -32,11 +31,11 @@ public class ComentariosValoracionesRutasDTO {
         this.comentario = comentario;
     }
 
-    public HistorialNavegacion getHistorialnavegacionid() {
+    public HistorialNavegacionDTO getHistorialnavegacionid() {
         return historialnavegacionid;
     }
 
-    public void setHistorialnavegacionid(HistorialNavegacion historialnavegacionid) {
+    public void setHistorialnavegacionid(HistorialNavegacionDTO historialnavegacionid) {
         this.historialnavegacionid = historialnavegacionid;
     }
 }
