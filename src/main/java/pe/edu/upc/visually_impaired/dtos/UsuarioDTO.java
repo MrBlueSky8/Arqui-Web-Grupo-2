@@ -10,6 +10,7 @@ public class UsuarioDTO {
     private String email;
     private String ultima_ubicacion;
     private String password;
+    private Boolean enabled;
     //private Tipos_de_usuario tipos_usuario;
 
     public int getIdUsuario() {
@@ -68,4 +69,11 @@ public class UsuarioDTO {
         this.password = password;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }

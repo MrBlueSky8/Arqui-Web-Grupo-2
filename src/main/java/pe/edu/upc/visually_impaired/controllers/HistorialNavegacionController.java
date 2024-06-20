@@ -24,21 +24,21 @@ public class HistorialNavegacionController {
     @Autowired
     private IHistorialNavegacionService hS;
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody HistorialNavegacionDTO historialNavegacionDTO){
         ModelMapper a = new ModelMapper();
         HistorialNavegacion historialNavegacion=a.map(historialNavegacionDTO,HistorialNavegacion.class);
         hS.insert(historialNavegacion);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody HistorialNavegacionDTO historialNavegacionDTO) {
         ModelMapper d=new ModelMapper();
         HistorialNavegacion historialNavegacion = d.map(historialNavegacionDTO,HistorialNavegacion.class);
         hS.insert(historialNavegacion);
     }
-    @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @GetMapping //reparado
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<HistorialNavegacionDTO> listar(){
         return hS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
@@ -47,12 +47,12 @@ public class HistorialNavegacionController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         hS.delete(id);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public HistorialNavegacionDTO listarId(@PathVariable Integer id){
         ModelMapper m = new ModelMapper();
         HistorialNavegacionDTO dto=m.map(hS.listId(id),HistorialNavegacionDTO.class);
@@ -60,7 +60,7 @@ public class HistorialNavegacionController {
     }
 
     @GetMapping("/rutamasviajadas")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<RutaMasTransitadaDTO> Ruta_mas_transitada(){
         List<String[]> filaLista = hS.Ruta_mas_transitada();
         List<RutaMasTransitadaDTO> dtoLista=new ArrayList<>();
@@ -75,7 +75,7 @@ public class HistorialNavegacionController {
         return dtoLista;
     }
     @GetMapping("/historialporfecha")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<HistorialXFechaDTO> HistorialPorFecha(@RequestParam int usuario_id, @RequestParam LocalDate fechas){
         List<String[]> filaLista = hS.FiltrarHistorialXFecha(usuario_id, fechas);
         List<HistorialXFechaDTO> dtoLista=new ArrayList<>();
@@ -92,7 +92,7 @@ public class HistorialNavegacionController {
         return dtoLista;
     }
     @GetMapping("/historialporperiodo")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<HistorialXFechaDTO> HistorialPorPeriodo(@RequestParam int usuario_id, @RequestParam String periodo){
         List<String[]> filaLista = hS.HistorialNavegacion_Por_Periodo(usuario_id, periodo.toLowerCase());
         List<HistorialXFechaDTO> dtoLista=new ArrayList<>();

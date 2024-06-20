@@ -24,21 +24,21 @@ public class NotificacionesController {
     @Autowired
     private INotificacionesService nS;
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody NotificacionesDTO notificacionesDTO){
         ModelMapper a = new ModelMapper();
         Notificaciones notificaciones=a.map(notificacionesDTO,Notificaciones.class);
         nS.insert(notificaciones);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody NotificacionesDTO notificacionesDTO) {
         ModelMapper d=new ModelMapper();
         Notificaciones notificaciones = d.map(notificacionesDTO,Notificaciones.class);
         nS.insert(notificaciones);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<NotificacionesDTO> listar(){
         return nS.list().stream().map(y->{
             ModelMapper e = new ModelMapper();
@@ -47,13 +47,13 @@ public class NotificacionesController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         nS.delete(id);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public NotificacionesDTO listarId(@PathVariable Integer id){
         ModelMapper m = new ModelMapper();
         NotificacionesDTO dto=m.map(nS.listId(id),NotificacionesDTO.class);
