@@ -4,7 +4,7 @@ public class RutaMasTransitadaDTO {
     private int id;
     private String punto_origen;
     private String punto_destino;
-    private int cantidad_de_viajes;
+    private int ruta_mas_transitada;
 
     public int getId() {
         return id;
@@ -30,11 +30,11 @@ public class RutaMasTransitadaDTO {
         this.punto_destino = punto_destino;
     }
 
-    public int getCantidad_de_viajes(String s) {
-        return cantidad_de_viajes;
+    public int getRuta_mas_transitada() {
+        return ruta_mas_transitada;
     }
 
-    public void setCantidad_de_viajes(int cantidad_de_viajes) {
-        this.cantidad_de_viajes = cantidad_de_viajes;
+    public void setRuta_mas_transitada(int ruta_mas_transitada) {
+        this.ruta_mas_transitada = ruta_mas_transitada;
     }
 }

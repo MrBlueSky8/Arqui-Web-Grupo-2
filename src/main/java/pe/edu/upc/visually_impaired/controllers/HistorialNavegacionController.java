@@ -64,7 +64,7 @@ public class HistorialNavegacionController {
             dto.setId(Integer.parseInt(fila[0]));
             dto.setPunto_destino(fila[1]);
             dto.setPunto_origen(fila[2]);
-            dto.setCantidad_de_viajes(Integer.parseInt(fila[3]));
+            dto.setRuta_mas_transitada(Integer.parseInt(fila[3]));
             dtoLista.add(dto);
         }
         return dtoLista;

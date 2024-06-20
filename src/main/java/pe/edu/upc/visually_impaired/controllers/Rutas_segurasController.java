@@ -63,8 +63,9 @@ public class Rutas_segurasController {
 
             RutasxDistanciaIngresadaDTO dto = new RutasxDistanciaIngresadaDTO();
             dto.setDistancia(Integer.parseInt(columna[0]));
-            dto.setPunto_origen(columna[1]);
-            dto.setPunto_destino(columna[2]);
+            dto.setDescripcion(columna[1]);
+            dto.setPunto_origen(columna[2]);
+            dto.setPunto_destino(columna[3]);
             dtoLista.add(dto);
         }
         return dtoLista;

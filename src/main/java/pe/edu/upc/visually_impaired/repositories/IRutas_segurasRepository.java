@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface IRutas_segurasRepository extends JpaRepository<Rutas_seguras,Integer> {
-    @Query(value = "SELECT distancia, punto_destino, punto_origen\n" +
+    @Query(value = "SELECT distancia, descripcion, punto_destino, punto_origen\n" +
             "FROM rutas_seguras\n" +
             "WHERE distancia <= :distanciaingresada", nativeQuery = true)
     public List<String[]> rutasSegurasanterioresxDistancia(int distanciaingresada); //Joaquin
