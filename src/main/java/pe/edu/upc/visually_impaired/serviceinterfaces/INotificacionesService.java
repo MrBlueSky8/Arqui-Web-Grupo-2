@@ -12,5 +12,5 @@ public interface INotificacionesService {
     public Notificaciones listId(int id);
     public List<String[]> notificacionesinleer(int idUsuario);
     public List<String[]> notifiacionesXtipo(String tipos,int idUsuarios);
-
+    List<String[]>NotificacionesXTipo();
 }

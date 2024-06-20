@@ -21,4 +21,9 @@ public interface INotificacionesRepository extends JpaRepository<Notificaciones,
                     "WHERE tn.tipo_notificacion =:tipo \n" +
                     "AND n.usuario_id =:idUsuario",nativeQuery = true)
     public List<String[]> notifiacionesXtipo(@Param("tipo")String tipos,@Param("idUsuario")int idUsuarios);//Mary
+    //Nuevo query
+    @Query(value =  "SELECT tn.tipo_notificacion, COUNT(*) AS cantidad_notificaciones \n" +
+                    "FROM notificaciones n \n" +
+                    "JOIN tipos_notificacion tn ON n.tipos_de_notificacion_id = tn.id \n" +
+                    "GROUP BY tn.tipo_notificacion ",nativeQuery = true)public List<String[]>NotificacionesXTipo();
 }

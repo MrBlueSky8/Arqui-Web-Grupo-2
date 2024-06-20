@@ -45,5 +45,10 @@ public class HistorialNavegacionImplement implements IHistorialNavegacionService
         return hR.HistorialNavegacion_Por_Periodo(usuarioId,periodos);
     }
 
+    @Override
+    public List<String[]> Rutasporperiodo() {
+        return hR.Rutasporperiodo();
+    }
+
 
 }
