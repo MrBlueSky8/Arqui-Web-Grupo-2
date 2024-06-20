@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.visually_impaired.dtos.EventosxvenirDTO;
-import pe.edu.upc.visually_impaired.dtos.NotificacionesDTO;
-import pe.edu.upc.visually_impaired.dtos.NotificacionesNoLeidasDTO;
-import pe.edu.upc.visually_impaired.dtos.NotificacionesXTipoDTO;
+import pe.edu.upc.visually_impaired.dtos.*;
 import pe.edu.upc.visually_impaired.entities.Notificaciones;
 import pe.edu.upc.visually_impaired.serviceinterfaces.INotificacionesService;
 
@@ -77,7 +74,7 @@ public class NotificacionesController {
         return dtoLista;
     }
 
-    @GetMapping("/notificacionesportipo")
+    @GetMapping("/notificacionesXtipo")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<NotificacionesXTipoDTO> notificacionesportipo(@RequestParam String tipos,@RequestParam int idUsuarios){
         List<String[]> filaLista = nS.notifiacionesXtipo(tipos,idUsuarios);
@@ -91,5 +88,20 @@ public class NotificacionesController {
         }
         return dtoLista;
     }
+    //Nuevo reporte
+    @GetMapping("/notificacionesportipov2")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<NotPorTipoDTO> notificacionesxtipov2(){
+        List<String[]> filaLista = nS.NotificacionesXTipo();
+        List<NotPorTipoDTO> dtoLista=new ArrayList<>();
+        for (String[] fila : filaLista){
+            NotPorTipoDTO dto = new NotPorTipoDTO();
+            dto.setTipo(fila[0]);
+            dto.setCantidad(Integer.parseInt(fila[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
 
 }
