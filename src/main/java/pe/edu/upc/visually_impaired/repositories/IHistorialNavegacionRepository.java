@@ -34,4 +34,24 @@ public interface IHistorialNavegacionRepository extends JpaRepository<HistorialN
                     "        OR (:periodo='ayer' AND fechayhora_destino >= CURRENT_DATE - INTERVAL '1 day' AND fechayhora_destino < CURRENT_DATE) \n" +
                     "        OR (:periodo='ultima semana' AND fechayhora_destino >= CURRENT_DATE - INTERVAL '7 days' AND fechayhora_destino < CURRENT_DATE)) \n",nativeQuery = true)
     public List<String[]> HistorialNavegacion_Por_Periodo(@Param("usuarioId")int usuarioId,@Param("periodo")String periodos);
+
+    //Nuevo Query
+    @Query(value =
+            "SELECT 'Hoy' AS periodo,COUNT(*) AS cantidad \n" +
+            "FROM historial_navegacion \n" +
+            "WHERE finalizado = true AND \n" +
+            "\tfechayhora_destino >= CURRENT_DATE AND fechayhora_destino < CURRENT_DATE + INTERVAL '1 day' \n" +
+            "\n" +
+            "UNION ALL \n" +
+            "SELECT 'Ayer' AS periodo,COUNT(*) AS cantidad \n" +
+            "FROM historial_navegacion \n" +
+            "WHERE finalizado = true AND \n" +
+            "\tfechayhora_destino >= CURRENT_DATE - INTERVAL '1 day' AND fechayhora_destino < CURRENT_DATE \n" +
+            "\n" +
+            "UNION ALL \n" +
+            "SELECT 'Ultima semana' AS periodo, COUNT(*) AS cantidad \n" +
+            "FROM historial_navegacion \n" +
+            "WHERE finalizado = true AND \n" +
+            "\tfechayhora_destino >= CURRENT_DATE - INTERVAL '7 days' AND fechayhora_destino < CURRENT_DATE + INTERVAL '1 day' ", nativeQuery = true)
+    public List<String[]>Rutasporperiodo();
 }
