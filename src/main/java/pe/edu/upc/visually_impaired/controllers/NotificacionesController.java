@@ -60,7 +60,7 @@ public class NotificacionesController {
         return dto;
     }
     @GetMapping("/notificacionessinleer")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<NotificacionesNoLeidasDTO> notificacionessinleer(@RequestParam int id_usuario){
         List<String[]> filaLista = nS.notificacionesinleer(id_usuario);
         List<NotificacionesNoLeidasDTO> dtoLista=new ArrayList<>();
