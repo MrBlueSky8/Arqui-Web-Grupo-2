@@ -2,7 +2,17 @@ package pe.edu.upc.visually_impaired.dtos;
 
 public class RutaMasTransitadaDTO {
     private int id;
+    private String descripcion;
     private String punto_origen;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     private String punto_destino;
     private int ruta_mas_transitada;
 

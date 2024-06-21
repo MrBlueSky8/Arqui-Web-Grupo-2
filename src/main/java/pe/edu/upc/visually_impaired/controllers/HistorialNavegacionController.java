@@ -62,9 +62,10 @@ public class HistorialNavegacionController {
         for (String[] fila : filaLista){
             RutaMasTransitadaDTO dto = new RutaMasTransitadaDTO();
             dto.setId(Integer.parseInt(fila[0]));
-            dto.setPunto_destino(fila[1]);
-            dto.setPunto_origen(fila[2]);
-            dto.setRuta_mas_transitada(Integer.parseInt(fila[3]));
+            dto.setDescripcion(fila[1]);
+            dto.setPunto_destino(fila[2]);
+            dto.setPunto_origen(fila[3]);
+            dto.setRuta_mas_transitada(Integer.parseInt(fila[4]));
             dtoLista.add(dto);
         }
         return dtoLista;

@@ -57,22 +57,27 @@ public class NotificacionesController {
         return dto;
     }
     @GetMapping("/notificacionessinleer")
-    public List<NotificacionesNoLeidasDTO> notificacionessinleer(@RequestParam int id_usuario){
+    //@PreAuthorize("hasAuthority('ADMIN')")
+    public List<NotificacionesNoLeidasDTO> notificacionessinleer(@RequestParam int id_usuario) {
         List<String[]> filaLista = nS.notificacionesinleer(id_usuario);
-        List<NotificacionesNoLeidasDTO> dtoLista=new ArrayList<>();
-        for (String[] fila : filaLista){
+        List<NotificacionesNoLeidasDTO> dtoLista = new ArrayList<>();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+
+        for (String[] fila : filaLista) {
             NotificacionesNoLeidasDTO dto = new NotificacionesNoLeidasDTO();
             dto.setId(Integer.parseInt(fila[0]));
             dto.setContenido(fila[1]);
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-            LocalDateTime dateTime = LocalDateTime.parse(fila[2], formatter);
-            dto.setFechayhora(dateTime);
+            // Parseamos la fecha y hora usando el formatter definido
+            LocalDateTime fechaHora = LocalDateTime.parse(fila[2], formatter);
+            dto.setFechayhora(fechaHora);
 
             dtoLista.add(dto);
         }
         return dtoLista;
     }
+
 
     @GetMapping("/notificacionesXtipo")
     @PreAuthorize("hasAuthority('ADMIN')")
