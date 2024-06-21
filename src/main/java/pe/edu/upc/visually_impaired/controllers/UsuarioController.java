@@ -70,4 +70,10 @@ public class UsuarioController {
         }
         return dtoLista;
     }
+    @GetMapping("/findidbyemail")
+    //@PreAuthorize("hasAuthority('ADMIN')")
+    public int FindIdByEmail(@RequestParam String email)
+    {
+        return uS.GetIdByEmail(email);
+    }
 }

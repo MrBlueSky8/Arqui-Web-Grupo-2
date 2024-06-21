@@ -15,4 +15,8 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
             "From Usuario \n" +
             "Group By genero; ",nativeQuery = true)
     public List<String[]> cantidadporGenero(); //Mafer
+
+    @Query(value = "select id_usuario from usuario where email= :emailusr",nativeQuery = true)
+    public int GetIdByEmail(String emailusr);
+
 }

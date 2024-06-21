@@ -12,4 +12,5 @@ public interface IUsuarioService {
 
     public Usuario listId(int id);
     public List<String[]> cantidadporGenero();
+    public int GetIdByEmail(String emailusr);
 }

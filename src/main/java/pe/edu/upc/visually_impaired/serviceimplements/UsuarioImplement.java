@@ -35,4 +35,9 @@ public class UsuarioImplement implements IUsuarioService {
     public List<String[]> cantidadporGenero(){
         return uR.cantidadporGenero();
     }
+
+    @Override
+    public int GetIdByEmail(String emailusr) {
+        return uR.GetIdByEmail(emailusr);
+    }
 }
