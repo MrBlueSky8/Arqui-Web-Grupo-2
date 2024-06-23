@@ -40,4 +40,9 @@ public class UsuarioImplement implements IUsuarioService {
     public int GetIdByEmail(String emailusr) {
         return uR.GetIdByEmail(emailusr);
     }
+
+    @Override
+    public int ultimoidregistrado() {
+        return uR.ultimoidregistrado();
+    }
 }

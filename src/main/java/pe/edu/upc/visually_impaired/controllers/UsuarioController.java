@@ -76,4 +76,11 @@ public class UsuarioController {
     {
         return uS.GetIdByEmail(email);
     }
+
+    @GetMapping("/ultimoidregistrado")
+    //@PreAuthorize("hasAuthority('ADMIN')")
+    public int UltimoIdRegistrado()
+    {
+        return uS.ultimoidregistrado();
+    }
 }
