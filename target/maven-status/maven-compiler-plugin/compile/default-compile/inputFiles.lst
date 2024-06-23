@@ -18,6 +18,7 @@ C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\dtos\EventosxvenirDTO.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\controllers\Tipos_notificacionController.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\repositories\ITipos_NoticiacionRepository.java
+C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\dtos\CantidadRutasXPeriodoDTO.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\dtos\RutasxDistanciaIngresadaDTO.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\serviceinterfaces\ITipos_notificacionService.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\repositories\ITipos_eventoRepository.java
@@ -72,5 +73,7 @@ C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\dtos\NotificacionesDTO.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\repositories\INotificacionesRepository.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\controllers\HistorialNavegacionController.java
+C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\dtos\NotPorTipoDTO.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\dtos\RutaSeguraTiempoPromedioDTO.java
 C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\serviceimplements\NotificacionesImplement.java
+C:\Users\MRBLU\OneDrive\Documentos\GitHub\Arqui-Web-Grupo-2\src\main\java\pe\edu\upc\visually_impaired\util\CorsConfig.java

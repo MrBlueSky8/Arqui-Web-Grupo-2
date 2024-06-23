@@ -16,9 +16,11 @@ pe\edu\upc\visually_impaired\serviceimplements\JwtUserDetailsService.class
 pe\edu\upc\visually_impaired\serviceimplements\Tipos_de_usuarioImplement.class
 pe\edu\upc\visually_impaired\VisuallyImpairedApplication.class
 pe\edu\upc\visually_impaired\dtos\ComentariosValoracionesRutasDTO.class
+pe\edu\upc\visually_impaired\util\CorsConfig.class
 pe\edu\upc\visually_impaired\repositories\IRutas_segurasRepository.class
 pe\edu\upc\visually_impaired\serviceimplements\Rutas_segurasImplement.class
 pe\edu\upc\visually_impaired\serviceimplements\Tipos_notificacionImplement.class
+pe\edu\upc\visually_impaired\dtos\NotPorTipoDTO.class
 pe\edu\upc\visually_impaired\securities\JwtRequestFilter.class
 pe\edu\upc\visually_impaired\serviceimplements\UsuarioImplement.class
 pe\edu\upc\visually_impaired\repositories\IUsuarioRepository.class
@@ -40,6 +42,7 @@ pe\edu\upc\visually_impaired\entities\ComentaiosValoracionesRutas.class
 pe\edu\upc\visually_impaired\entities\Usuario.class
 pe\edu\upc\visually_impaired\repositories\ITipos_NoticiacionRepository.class
 pe\edu\upc\visually_impaired\dtos\CantEventosPasadosByTeDTO.class
+pe\edu\upc\visually_impaired\dtos\CantidadRutasXPeriodoDTO.class
 pe\edu\upc\visually_impaired\securities\JwtResponse.class
 pe\edu\upc\visually_impaired\serviceimplements\EventosImplement.class
 pe\edu\upc\visually_impaired\serviceinterfaces\ITipos_notificacionService.class
