@@ -72,6 +72,8 @@ public class WebSecurityConfig {
                         .requestMatchers(antMatcher("/historialnavegacion")).permitAll()
                         .requestMatchers(antMatcher("/comentariosvaloracionesrutas")).permitAll()
                         .requestMatchers(antMatcher("/tipos_notificacion")).permitAll()
+                        .requestMatchers(antMatcher("/usuarios/findidbyemail")).permitAll()
+                        .requestMatchers(antMatcher("/usuarios/ultimoidregistrado")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())

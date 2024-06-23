@@ -2,8 +2,17 @@ package pe.edu.upc.visually_impaired.dtos;
 
 public class RutasxDistanciaIngresadaDTO {
     private int distancia;
+    private String descripcion;
     private String punto_origen;
     private String punto_destino;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public int getDistancia() {
         return distancia;

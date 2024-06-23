@@ -2,18 +2,13 @@ package pe.edu.upc.visually_impaired.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.visually_impaired.dtos.HistorialNavegacionDTO;
-import pe.edu.upc.visually_impaired.dtos.HistorialXFechaDTO;
-import pe.edu.upc.visually_impaired.dtos.RutaMasTransitadaDTO;
-import pe.edu.upc.visually_impaired.dtos.ValoracionesRutasDTO;
+import pe.edu.upc.visually_impaired.dtos.*;
 import pe.edu.upc.visually_impaired.entities.HistorialNavegacion;
 import pe.edu.upc.visually_impaired.serviceinterfaces.IHistorialNavegacionService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,9 +62,10 @@ public class HistorialNavegacionController {
         for (String[] fila : filaLista){
             RutaMasTransitadaDTO dto = new RutaMasTransitadaDTO();
             dto.setId(Integer.parseInt(fila[0]));
-            dto.setPunto_destino(fila[1]);
-            dto.setPunto_origen(fila[2]);
-            dto.setCantidad_de_viajes(Integer.parseInt(fila[3]));
+            dto.setDescripcion(fila[1]);
+            dto.setPunto_destino(fila[2]);
+            dto.setPunto_origen(fila[3]);
+            dto.setRuta_mas_transitada(Integer.parseInt(fila[4]));
             dtoLista.add(dto);
         }
         return dtoLista;
@@ -108,4 +104,18 @@ public class HistorialNavegacionController {
         }
         return dtoLista;
     }
+    @GetMapping("/cantidadrutasporperiodo")
+    //@PreAuthorize("hasAuthority('ADMIN')")
+    public List<CantidadRutasXPeriodoDTO> CanRutasXPorPeriodo(){
+        List<String[]> filaLista = hS.Rutasporperiodo();
+        List<CantidadRutasXPeriodoDTO> dtoLista=new ArrayList<>();
+        for (String[] fila : filaLista){
+            CantidadRutasXPeriodoDTO dto = new CantidadRutasXPeriodoDTO();
+            dto.setPeriodo(fila[0]);
+            dto.setCantidad(Integer.parseInt(fila[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
 }

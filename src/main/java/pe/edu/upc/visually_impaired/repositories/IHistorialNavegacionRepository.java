@@ -12,11 +12,11 @@ import java.util.List;
 
 @Repository
 public interface IHistorialNavegacionRepository extends JpaRepository<HistorialNavegacion, Integer> {
-    @Query(value = "select rs.id, rs.punto_origen, rs.punto_destino, COUNT(*) AS Ruta_mas_transitada\n" +
+    @Query(value = "select rs.id, rs.descripcion,rs.punto_origen, rs.punto_destino, COUNT(*) AS Ruta_mas_transitada\n" +
             "from rutas_seguras rs\n" +
             "inner join historial_navegacion hn ON rs.id = hn.ruta_id\n" +
             "where hn.finalizado = true\n" +
-            "group by  rs.id, rs.punto_origen, rs.punto_destino\n" +
+            "group by  rs.id, rs.descripcion, rs.punto_origen, rs.punto_destino\n" +
             "order by  Ruta_mas_transitada desc LIMIT 1;\n", nativeQuery = true)
     public List<String[]> Ruta_mas_transitada(); //joaquin
     @Query(value =  "SELECT rs.punto_destino,rs.punto_origen,hn.fechayhora_inicio,hn.fechayhora_destino,hn.detalles,hn.finalizado \n" +
@@ -34,4 +34,24 @@ public interface IHistorialNavegacionRepository extends JpaRepository<HistorialN
                     "        OR (:periodo='ayer' AND fechayhora_destino >= CURRENT_DATE - INTERVAL '1 day' AND fechayhora_destino < CURRENT_DATE) \n" +
                     "        OR (:periodo='ultima semana' AND fechayhora_destino >= CURRENT_DATE - INTERVAL '7 days' AND fechayhora_destino < CURRENT_DATE)) \n",nativeQuery = true)
     public List<String[]> HistorialNavegacion_Por_Periodo(@Param("usuarioId")int usuarioId,@Param("periodo")String periodos);
+
+    //Nuevo Query
+    @Query(value =
+            "SELECT 'Hoy' AS periodo,COUNT(*) AS cantidad \n" +
+            "FROM historial_navegacion \n" +
+            "WHERE finalizado = true AND \n" +
+            "\tfechayhora_destino >= CURRENT_DATE AND fechayhora_destino < CURRENT_DATE + INTERVAL '1 day' \n" +
+            "\n" +
+            "UNION ALL \n" +
+            "SELECT 'Ayer' AS periodo,COUNT(*) AS cantidad \n" +
+            "FROM historial_navegacion \n" +
+            "WHERE finalizado = true AND \n" +
+            "\tfechayhora_destino >= CURRENT_DATE - INTERVAL '1 day' AND fechayhora_destino < CURRENT_DATE \n" +
+            "\n" +
+            "UNION ALL \n" +
+            "SELECT 'Ultima semana' AS periodo, COUNT(*) AS cantidad \n" +
+            "FROM historial_navegacion \n" +
+            "WHERE finalizado = true AND \n" +
+            "\tfechayhora_destino >= CURRENT_DATE - INTERVAL '7 days' AND fechayhora_destino < CURRENT_DATE + INTERVAL '1 day' ", nativeQuery = true)
+    public List<String[]>Rutasporperiodo();
 }

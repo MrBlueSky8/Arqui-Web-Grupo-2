@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.visually_impaired.dtos.EventosxvenirDTO;
-import pe.edu.upc.visually_impaired.dtos.NotificacionesDTO;
-import pe.edu.upc.visually_impaired.dtos.NotificacionesNoLeidasDTO;
-import pe.edu.upc.visually_impaired.dtos.NotificacionesXTipoDTO;
+import pe.edu.upc.visually_impaired.dtos.*;
 import pe.edu.upc.visually_impaired.entities.Notificaciones;
 import pe.edu.upc.visually_impaired.serviceinterfaces.INotificacionesService;
 
@@ -60,25 +57,29 @@ public class NotificacionesController {
         return dto;
     }
     @GetMapping("/notificacionessinleer")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public List<NotificacionesNoLeidasDTO> notificacionessinleer(@RequestParam int id_usuario){
+    //@PreAuthorize("hasAuthority('ADMIN')")
+    public List<NotificacionesNoLeidasDTO> notificacionessinleer(@RequestParam int id_usuario) {
         List<String[]> filaLista = nS.notificacionesinleer(id_usuario);
-        List<NotificacionesNoLeidasDTO> dtoLista=new ArrayList<>();
-        for (String[] fila : filaLista){
+        List<NotificacionesNoLeidasDTO> dtoLista = new ArrayList<>();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+
+        for (String[] fila : filaLista) {
             NotificacionesNoLeidasDTO dto = new NotificacionesNoLeidasDTO();
             dto.setId(Integer.parseInt(fila[0]));
             dto.setContenido(fila[1]);
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-            LocalDateTime dateTime = LocalDateTime.parse(fila[2], formatter);
-            dto.setFechayhora(dateTime);
+            // Parseamos la fecha y hora usando el formatter definido
+            LocalDateTime fechaHora = LocalDateTime.parse(fila[2], formatter);
+            dto.setFechayhora(fechaHora);
 
             dtoLista.add(dto);
         }
         return dtoLista;
     }
 
-    @GetMapping("/notificacionesportipo")
+
+    @GetMapping("/notificacionesXtipo")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<NotificacionesXTipoDTO> notificacionesportipo(@RequestParam String tipos,@RequestParam int idUsuarios){
         List<String[]> filaLista = nS.notifiacionesXtipo(tipos,idUsuarios);
@@ -92,5 +93,20 @@ public class NotificacionesController {
         }
         return dtoLista;
     }
+    //Nuevo reporte
+    @GetMapping("/notificacionesportipov2")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<NotPorTipoDTO> notificacionesxtipov2(){
+        List<String[]> filaLista = nS.NotificacionesXTipo();
+        List<NotPorTipoDTO> dtoLista=new ArrayList<>();
+        for (String[] fila : filaLista){
+            NotPorTipoDTO dto = new NotPorTipoDTO();
+            dto.setTipo(fila[0]);
+            dto.setCantidad(Integer.parseInt(fila[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
 
 }
